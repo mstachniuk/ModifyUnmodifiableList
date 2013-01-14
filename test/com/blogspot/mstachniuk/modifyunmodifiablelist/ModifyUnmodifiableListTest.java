@@ -23,7 +23,7 @@ public class ModifyUnmodifiableListTest {
 
     @Test(expected = UnsupportedOperationException.class)
     public void shouldThrowExceptionWhenModifyUnmodifiableList() {
-        final List<String> unmodifiableList = Collections.unmodifiableList(this.exampleList);
+        List<String> unmodifiableList = Collections.unmodifiableList(this.exampleList);
         unmodifiableList.clear();
     }
 
