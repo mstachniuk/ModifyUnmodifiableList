@@ -16,24 +16,24 @@ public class ModifyUnmodifiableListTest {
 
     @Before
     public void setUp() {
-        this.exampleList.add("text 1");
-        this.exampleList.add("text 2");
-        this.exampleList.add("text 3");
+        exampleList.add("text 1");
+        exampleList.add("text 2");
+        exampleList.add("text 3");
     }
 
     @Test(expected = UnsupportedOperationException.class)
     public void shouldThrowExceptionWhenModifyUnmodifiableList() {
-        List<String> unmodifiableList = Collections.unmodifiableList(this.exampleList);
+        List<String> unmodifiableList = Collections.unmodifiableList(exampleList);
         unmodifiableList.clear();
     }
 
     @Test
     public void shouldModifyUnmodifiableList() {
         // given
-        final List<String> unmodifiableList = Collections.unmodifiableList(this.exampleList);
+        List<String> unmodifiableList = Collections.unmodifiableList(exampleList);
 
         // when
-        this.exampleList.clear();
+        exampleList.clear();
 
         // then
         assertEquals(0, unmodifiableList.size());
@@ -42,10 +42,10 @@ public class ModifyUnmodifiableListTest {
     @Test
     public void shouldCloneUnmodifiableListToArray() {
         // given
-        String[] unmodifiableTab = this.exampleList.toArray(new String[exampleList.size()]);
+        String[] unmodifiableTab = exampleList.toArray(new String[exampleList.size()]);
 
         // when
-        this.exampleList.clear();
+        exampleList.clear();
 
         // then
         assertEquals(3, unmodifiableTab.length);
@@ -61,7 +61,7 @@ public class ModifyUnmodifiableListTest {
         }
 
         // when
-        this.exampleList.clear();
+        exampleList.clear();
 
         // then
         assertEquals(3, unmodifiableList.size());
@@ -74,7 +74,7 @@ public class ModifyUnmodifiableListTest {
         List<String> unmodifiableList = SerializationUtils.clone((ArrayList<String>) exampleList);
 
         // when
-        this.exampleList.clear();
+        exampleList.clear();
 
         // then
         assertEquals(3, unmodifiableList.size());
